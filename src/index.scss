@@ -1,0 +1,104 @@
+@import "./helpers/variables";
+@import "./helpers/grid.module";
+@import "./helpers/fluidFonts";
+
+$min_width: 320px;
+$max_width: 4096px;
+$min_font: 16px;
+$max_font: 20px;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+ul,
+ol {
+  padding: 0;
+  padding-inline-start: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+html {
+  height: 100%;
+  font-family: "IBM Plex Mono", "Lucida Console", Courier, monospace;
+  color: $mainFontColor;
+  @include fluid-type($min_width, $max_width, $min_font, $max_font);
+  overflow-x: hidden;
+}
+
+body {
+  position: relative;
+  min-height: 100%;
+  background-color: $mainColor;
+  overflow-x: hidden;
+}
+
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+img,
+video {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+}
+
+#root {
+  min-height: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: grid;
+  grid-template-rows: max-content 1fr max-content;
+  grid-template-columns: 8.4% 1fr 8.4%;
+  @media (min-width: 2048px) {
+    grid-template-columns: 1fr 1680px 1fr;
+  }
+  @media (max-width: 440px) {
+    grid-template-columns: 3% 1fr 3%;
+  }
+}
+
+.decorate {
+  border-bottom: $linkUnderline;
+  &:hover {
+    border-bottom: #0c5da5;
+  }
+}
+
+.overflow {
+  overflow: hidden;
+}
